@@ -1,0 +1,17 @@
+.tile{
+    width:100%;
+    display:flex;
+    background: black;
+}
+
+.tile figure{
+    flex:1;
+}
+
+.tile img{
+    width:100%;
+}
+
+.tile section{
+    flex:3;
+}
