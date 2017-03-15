@@ -72,14 +72,13 @@ class Form extends React.Component{
         console.log({name: event.target.value});
         varName = this.state.name;
         console.log("varName: "+varName);
-        }
+    }
 
     validatePhone(event){
         this.setState({phone: event.target.value.substr(0,10)});
         console.log({phone: event.target.value});
         varPhone = this.state.phone;
         console.log("varPhone: "+varPhone);
-
     }
 
     validateEmail(event){
@@ -87,7 +86,6 @@ class Form extends React.Component{
         console.log({email: event.target.value});
         varEmail = this.state.email;
         console.log("varEmail: "+varEmail);
-
     }
 
     validateSSN(event){
@@ -95,7 +93,6 @@ class Form extends React.Component{
         console.log({ssn: event.target.value});
         varSSN = this.state.ssn;
         console.log("varSSN: "+varSSN);
-
     }
 
     render(){
