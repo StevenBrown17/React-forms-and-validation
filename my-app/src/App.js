@@ -16,7 +16,9 @@ class App extends Component {
           <img src={slinky} className="slinky" alt="slinky" height="100" />
           <h2>Stevens React Application</h2>
         </div>
+        <div style={{width:"25%", margin:"0 auto"}}>
         <FormView/>
+        </div>
       </div>
     );
   }
