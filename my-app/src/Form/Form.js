@@ -1,4 +1,6 @@
 import React from 'react';
+//import './src/App.css';
+
 
 let varName="",varEmail="",varPhone="",varSSN="";
 
@@ -13,8 +15,8 @@ function isEmail(email) {
 
 class Form extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             name: '',
@@ -35,13 +37,15 @@ class Form extends React.Component{
     }
 
     
-
+ 
     onSubmit(){
+        // document.getElementsByTagName("label").style.visibility="visible"
+
         console.log("HELLO WORLD");
         console.log(varName)
 
         if(varName==="" || hasNumber(varName)){
-            console.log("invalid name ");
+             console.log("invalid name ");
         }else{
             console.log("valid name");
         }
@@ -67,41 +71,66 @@ class Form extends React.Component{
 
     }
 
+    // validateName(event){
+    //     this.setState({name: event.target.value});
+    //     console.log({name: event.target.value});
+    //     varName = this.state.name;
+    //     console.log("varName: "+varName);
+    // }
+
     validateName(event){
-        this.setState({name: event.target.value});
-        console.log({name: event.target.value});
-        varName = this.state.name;
-        console.log("varName: "+varName);
-    }
+        const name = event.target.value
+        this.setState({name});
+        console.log({name});
+        varName = name;
+        console.log("varName: "+name);
+  }
 
     validatePhone(event){
-        this.setState({phone: event.target.value.substr(0,10)});
-        console.log({phone: event.target.value});
-        varPhone = this.state.phone;
-        console.log("varPhone: "+varPhone);
+        const phone = event.target.value.substr(0,9);
+        this.setState({phone});
+        console.log({phone});
+        varPhone = phone;
+        console.log("varPhone: "+phone);
     }
 
     validateEmail(event){
-        this.setState({email: event.target.value});
-        console.log({email: event.target.value});
-        varEmail = this.state.email;
-        console.log("varEmail: "+varEmail);
+        const email = event.target.value
+        this.setState({email});
+        console.log({email});
+        varEmail = email;
+        console.log("varEmail: "+email);
     }
 
     validateSSN(event){
-        this.setState({ssn: event.target.value.substr(0,9)});
-        console.log({ssn: event.target.value});
-        varSSN = this.state.ssn;
+        // this.setState({ssn: event.target.value.substr(0,9)});
+        // console.log({ssn: event.target.value});
+        // varSSN = this.state.ssn;
+        // console.log("varSSN: "+varSSN);
+
+        const ssn = event.target.value.substr(0,9);
+        this.setState({ssn});
+        console.log({ssn});
+        varSSN = ssn;
         console.log("varSSN: "+varSSN);
+
     }
 
     render(){
         return(
             <div>
-                <p><input type="text" value={this.state.name} placeholder="Name" onChange={this.validateName.bind(this)} onKeyDown={this.onEnter}/></p>
-                <p><input type="text" value={this.state.phone} placeholder="Phone (no dashes)" onChange={this.validatePhone.bind(this)} onKeyDown={this.onEnter}/></p>
-                <p><input type="email" value={this.state.email} placeholder="Email" onChange={this.validateEmail.bind(this)} onKeyDown={this.onEnter}/></p>
-                <p><input type="password" value={this.state.ssn} placeholder="SSN" onChange={this.validateSSN.bind(this)} onKeyDown={this.onEnter}/></p>
+                <p><input type="text" value={this.state.name} placeholder="Name" onChange={this.validateName.bind(this)} onKeyDown={this.onEnter}/>
+                    <label> *INVALID NAME*</label>
+                </p> 
+                <p><input type="text" value={this.state.phone} placeholder="Phone (no dashes)" onChange={this.validatePhone.bind(this)} onKeyDown={this.onEnter}/>
+                    <label id="phoneLabel" for="phoneLabel"> *INVALID PHONE*</label>
+                </p>
+                <p><input type="email" value={this.state.email} placeholder="Email" onChange={this.validateEmail.bind(this)} onKeyDown={this.onEnter}/>
+                    <label color="red"> *INVALID EMAIL*</label>
+                </p>
+                <p><input type="password" value={this.state.ssn} placeholder="SSN" onChange={this.validateSSN.bind(this)} onKeyDown={this.onEnter}/>
+                    <label> *INVALID  SSN*</label>
+                </p>
                 <p><button onClick={this.onSubmit}>Submit</button></p>
             </div>
         )
